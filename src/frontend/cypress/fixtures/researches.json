@@ -1,0 +1,16 @@
+{
+  "researches": [
+    {
+      "name": "Pesquisa 1",
+      "description": "Descrição"
+    },
+    {
+      "name": "Pesquisa 2",
+      "description": "Descrição"
+    },
+    {
+      "name": "Pesquisa 3",
+      "description": "Descrição"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+name: Push-BackEnd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v3
+
+      - name: Create ~/.ssh directory
+        run: mkdir -p ~/.ssh
+
+      - name: Verificar Conexão SSH
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/deploy_key
+          chmod 600 /home/runner/.ssh/deploy_key
+          ssh -Tv -i /home/runner/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}
+
+      - name: Deploying
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ${{ secrets.TARGET }}
+          EXCLUDE: "/dist/, /node.modules/, **.gitigonre"
+          SCRIPT_AFTER: |
+            sh update.sh

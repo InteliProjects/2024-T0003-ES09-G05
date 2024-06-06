@@ -1,0 +1,27 @@
+.pathContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 30px 50px;
+}
+
+.pathItem {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    p {
+        font-weight: 400;
+        font-size: 13pt;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+    .pFocus {
+        color: #636364;
+    }
+}

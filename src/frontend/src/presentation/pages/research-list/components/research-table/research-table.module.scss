@@ -1,0 +1,10 @@
+.table {
+    .action {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        svg {
+            cursor: pointer;
+        }
+    }
+}

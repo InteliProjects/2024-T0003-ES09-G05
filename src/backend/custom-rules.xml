@@ -1,0 +1,37 @@
+<Profile>
+  <rule key="CustomLintRule">
+    <name>Custom Lint Rule</name>
+    <description>Description of the custom lint rule.</description>
+    <priority>MAJOR</priority>
+    <tags>custom-rule, lint</tags>
+    <properties>
+      <property key="minLength" value="10" />
+    </properties>
+    <conditions>
+      <condition>
+        <pattern>.*</pattern>
+        <params>
+          <param key="name" value="function" />
+          <param key="minLength" value="10" />
+        </params>
+      </condition>
+    </conditions>
+  </rule>
+</Profile>
+
+<Profile>
+  <rule key="CustomCoverageRule">
+    <name>Custom Coverage Rule</name>
+    <description>Description of the custom coverage rule.</description>
+    <priority>MAJOR</priority>
+    <tags>custom-rule, coverage</tags>
+    <conditions>
+      <condition>
+        <pattern>.*</pattern>
+        <params>
+          <param key="minCoverage" value="80" />
+        </params>
+      </condition>
+    </conditions>
+  </rule>
+</Profile>

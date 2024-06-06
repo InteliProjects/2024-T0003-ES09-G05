@@ -1,0 +1,16 @@
+export const elements = {
+  title: 'h1',
+  name: '[data-testid=name]',
+  channel: '[data-testid=channel]',
+  created: '[data-testid=created]',
+  status: '[data-testid=status]',
+  action: '[data-testid=action]',
+  trBody: '[data-testid=trBody]',
+  createButton: '[data-testid=create-button]',
+  modal: '[data-testid=modal]',
+  select: '[data-testid=distribution-type]',
+  download: '[data-testid=download]',
+  upload: 'input[type=file]',
+  uploadedFile: '[data-testid=uploaded-file]',
+  svg: 'svg',
+}

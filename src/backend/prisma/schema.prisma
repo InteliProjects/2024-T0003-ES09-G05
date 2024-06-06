@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Researchs {
+  id           String         @id @default(uuid())
+  title        String
+  status       Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  distribution Distribution[]
+}
+
+model Distribution {
+  id         String              @id @default(uuid())
+  channel    String
+  status     Boolean             @default(false)
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  researchId String
+  Research   Researchs           @relation(fields: [researchId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  users      UsersDistribution[]
+}
+
+model UsersDistribution {
+  id             String       @id @default(uuid())
+  name           String
+  contact        String
+  grade          Int?
+  distributionId String
+  Distribution   Distribution @relation(fields: [distributionId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  createdAt      DateTime     @default(now())
+}
